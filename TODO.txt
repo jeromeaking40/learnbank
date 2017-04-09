@@ -1,0 +1,5 @@
+Add Database Models
+Add Crud Methods
+Add Auth
+Connect Client(Angular) to Server(Node)
+Do UI Design
