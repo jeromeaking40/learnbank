@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app='LearnBank'>
+
+<head>
+    <meta charset="utf-8">
+    <title>LearnBank</title>
+    <!--CSS-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/alertify.min.css" />
+    <link href="//cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+    <!--BOOSTRAP-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/bootstrap.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" />
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!--ANGULAR DEPENDECIES-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script src="//cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.js"></script>
+    <script src="//cdn.jsdelivr.net/alertifyjs/1.8.0/alertify.min.js"></script>
+    <!--PAGINATION-->
+    <!-- <script src="/assets/angularUtils-pagination/dirPagination.js"></script>
+    <script src="/assets/angularUtils-pagination/dirPagination.tpl.html"></script> -->
+    <!--CONTROLLERS AND FACTORIES-->
+    <script src="app/module.app.js"></script>
+    <script src="app/controller.app.js"></script>
+    <!-- <script src="app/components/auth/authController.js"></script>
+    <script src="app/components/profile/profileController.js"></script>
+    <script src="app/services/factoryAPI.js"></script> -->
+    <!-- <script src="/login/module.login.js"></script> -->
+</head>
+
+<body ng-controller="mainCtrl as main">
+
+    <!--NAVIGATION -->
+    <ng-include src="'app/components/navbar/navbar.html'"></ng-include>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+        <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT-->
+        <div ng-view></div>
+    </div>
+
+    <!--FOOTER-->
+
+</body>
+</html>
