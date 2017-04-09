@@ -4,7 +4,8 @@
   "description": "Web App to store favorite learning resources",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nodemon --exec 'mocha --recursive -R min'",
+    "start": "pm2 start process.json"
   },
   "author": "",
   "license": "ISC",

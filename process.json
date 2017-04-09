@@ -1,0 +1,7 @@
+{
+    "apps": [{
+        "name": "learnbank",
+        "script": "server.js",
+        "watch": true
+    }]
+}

@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({extended: true}), bodyParser.json());
 mongoose.connect(Config.database);
 
 //ROUTES
-// Routes(app);
+Routes(app);
 
 //SERVE UP FILES
 app.use(express.static('public'));
