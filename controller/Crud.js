@@ -1,5 +1,5 @@
 const User = require('../models/User'),
-    Bank = require('../models/Bank'),
+    Vault = require('../models/Vault'),
     Book = require('../models/BookSchema'),
     Website = require('../models/WebsiteSchema'),
     Podcast = require('../models/PodcastSchema');
@@ -15,7 +15,7 @@ module.exports = {
             res.json(book);
         });
     },
-    //ADD NEW WEBSITE
+    //ADD NEW PODCAST
     addPodcast: (req, res) => {
         var podcast = new Podcast(req.body);
         podcast.save((err, podcast) => {
@@ -25,8 +25,19 @@ module.exports = {
             res.json(podcast);
         });
     },
+    //ADD NEW WEBSITE
     addWebsite: (req, res) => {
         var website = new Website(req.body);
+        website.save((err, website) => {
+            if (err) {
+                console.log(err);
+            }
+            res.json(website);
+        });
+    },
+    //DELETE BOOK
+    deleteBook: (req, res) => {
+      Vault.findOne({_id: req.params.id})
         website.save((err, website) => {
             if (err) {
                 console.log(err);

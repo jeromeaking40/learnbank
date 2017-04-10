@@ -17,10 +17,6 @@ const UserSchema = new Schema({
     password: {
         type: String,
         required: true
-    },
-    bank: {
-        type: Schema.Types.ObjectId,
-        ref: 'Bank'
     }
 });
 
@@ -31,7 +27,7 @@ UserSchema.pre('save', function(next) {
     if (!user.isModified('password')) {
         return next();
     }
-    // GENERATE A SALT VALUE TO ENCRYPT OUR PASSWORD
+    // GENERATE A SALT VALUE TO ENCRYPT PASSWORD
     bcrypt.genSalt(SALT_INDEX, (saltErr, salt) => {
         if (saltErr) {
             console.error(saltErr);

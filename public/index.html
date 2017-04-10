@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/bootstrap.min.css" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" />
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- <link rel="stylesheet" href="/assets/css/style.css"> -->
     <!--ANGULAR DEPENDECIES-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
     <script src="//cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
@@ -25,10 +25,10 @@
     <!--CONTROLLERS AND FACTORIES-->
     <script src="app/module.app.js"></script>
     <script src="app/controller.app.js"></script>
-    <!-- <script src="app/components/auth/authController.js"></script>
-    <script src="app/components/profile/profileController.js"></script>
-    <script src="app/services/factoryAPI.js"></script> -->
-    <!-- <script src="/login/module.login.js"></script> -->
+    <script src="app/components/register/authController.js"></script>
+    <!-- <script src="app/components/profile/profileController.js"></script> -->
+    <!-- <script src="app/services/factoryAPI.js"></script> -->
+    <script src="/login/module.login.js"></script>
 </head>
 
 <body ng-controller="mainCtrl as main">
@@ -43,6 +43,8 @@
     </div>
 
     <!--FOOTER-->
+    <!-- <ng-include src="'app/navbar/navbar.html'"></ng-include> -->
+
 
 </body>
 </html>

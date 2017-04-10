@@ -1,13 +1,19 @@
-var App = angular.module('LearnBank', ['ngRoute']).config([
+var App = angular.module('LearnBank', ['ngRoute'])
+  .config([
     '$routeProvider',
-    function($routeProvider) {
-        $routeProvider.when('/', {
-            templateUrl: '/app/home/home.html',
+      function($routeProvider) {
+        $routeProvider
+          .when('/', {
+            templateUrl: '/app/components/home/home.html',
             controller: 'mainCtrl as main'
-        })
-        .otherwise({
-          redirectTo: '/'
-        });
+          })
+          .when('/register', {
+              templateUrl: '/app/components/register/register.html',
+              controller: 'authCtrl as auth'
+          })
+          .otherwise({
+            redirectTo: '/'
+          });
 
         alertify.defaults = {
             // notifier defaults

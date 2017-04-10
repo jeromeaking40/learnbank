@@ -1,0 +1,18 @@
+<div class="container">
+    <h1>Registration</h1>
+
+    <form ng-submit="auth.register.submit()" style="margin-top:30px;">
+        <h3>Register</h3>
+
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Email" ng-model="auth.payload.email">
+        </div>
+
+
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" ng-model="auth.payload.password">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+</div>
