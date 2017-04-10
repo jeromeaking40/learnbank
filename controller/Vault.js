@@ -15,7 +15,7 @@ module.exports = {
     },
     //GET VAULT
     findVault: (req, res) => {
-        Vault.findOne({user: req.session._id}, function(err, vault) {
+        Vault.findOne({user: req.session._id}).populate('user').exec(function(err, vault) {
             if (err) {
                 res.send(err);
             } else {
