@@ -13,7 +13,7 @@ var App = angular.module('LearnBank', ['ngRoute'])
           })
           .when('/profile', {
            templateUrl: '/app/components/profile/profile.html',
-           controller: 'mainCtrl as main'
+           controller: 'authCtrl as auth'
           })
           .when('/addvault', {
               templateUrl: '/app/components/vault/addvault.html',

@@ -12,7 +12,8 @@ module.exports = {
             if (err) {
                 return res.status(500).send(err);
             }
-            res.send(user);
+            req.session = user;
+            res.json(user);
         });
     },
     //LOGIN USERS
@@ -58,7 +59,7 @@ module.exports = {
             if (err) {
                 res.send(err);
             }
-            delete user.password;
+            // delete user.password;
             res.send(user);
         });
     },

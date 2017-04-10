@@ -1,5 +1,5 @@
 <!--NAV-->
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse" ng-controller="authCtrl as auth">
 
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -11,31 +11,32 @@
     </div>
 
     <!--NOT LOGGED IN NAV-->
-    <div ng-switch="main.signedIn">
+    <div ng-switch="auth.signedIn">
         <div class="collapse navbar-collapse .visible-xs-*" id="bs-example-navbar-collapse-1">
             <ul class="nav nav-pills pull-right" ng-switch-default>
                 <li><a href="/#/">Home</a></li>
                 <li><a href="#/register">Register</a></li>
                 <li><a href="/login.html">Login</a></li>
             </ul>
+
             <!--LOGGED IN NAV-->
             <ul class="nav nav-pills pull-right" ng-switch-when="true">
                 <li><a href="#/createvault">Create Vault</a></li>
                 <li><a href="#/addvault">Add Resources</a></li>
+                <li><a href="/logout">Logout</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-user">
-                    {{main.profile.name}}</i><span class="caret"></span>
+                    {{auth.profile.name}}</i><span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="/#/profile">ACCOUNT INFO</a>
                         </li>
-                        <li>
-                            <a href="/logout">LOGOUT</a>
-                        </li>
                     </ul>
                 </li>
         </div>
+
     </div>
+
 </nav>
 <!--END OF NAV-->

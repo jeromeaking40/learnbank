@@ -14,6 +14,7 @@ function AuthController($http) {
         },
         success: function(res) {
             alertify.success("Successfully created account!");
+            location.href = '/#/createvault';
             auth.payload = {};
             console.log('Account Created', res.data);
         },
@@ -22,4 +23,21 @@ function AuthController($http) {
             console.error('No Go', err);
         }
     };
+
+    // GET INFORMATION ONCE USER LOGS IN
+    auth.info = function() {
+        $http.get('/api/me').then(function(res) {
+            auth.profile = res.data;
+            if (res.data._id) {
+                auth.signedIn = true;
+            } else {
+                auth.signedIn = false;
+            }
+        }, function(err) {
+            console.error(err);
+        });
+    };
+
+    auth.info();
+
 }
