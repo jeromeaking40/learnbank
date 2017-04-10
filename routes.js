@@ -5,8 +5,9 @@ const Crud = require('./controller/Crud');
 module.exports = (app) => {
   app.post('/register', Auth.userRegister);
   app.post('/login', Auth.userLogin);
-  
-  app.post('/addvault/:id', Vault.addVault);
+  app.get('/api/me', Auth.me);
+
+  app.post('/addvault/', Vault.addVault);
   app.get('/myvault/:id', Vault.findVault);
 
   app.post('/addbook', Crud.addBook);

@@ -1,8 +1,5 @@
 const mongoose = require('mongoose'),
     User = require('../models/User'),
-    WebsiteSchema = require('../models/WebsiteSchema'),
-    BookSchema = require('../models/BookSchema'),
-    PodcastSchema = require('../models/PodcastSchema'),
     Schema = mongoose.Schema;
 
 const VaultSchema = new Schema({
@@ -10,9 +7,22 @@ const VaultSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    websites: [WebsiteSchema],
-    books: [BookSchema],
-    podcasts: [PodcastSchema]
+    username: {
+      type: String,
+      unique: true
+    },
+    websites: {
+      type: Array,
+      default: []
+    },
+    books: {
+      type: Array,
+      default: [],
+    },
+    podcasts:  {
+      type: Array,
+      default: []
+    }
 });
 
 const Vault = mongoose.model('Vault', VaultSchema);

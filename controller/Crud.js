@@ -1,48 +1,116 @@
 const User = require('../models/User'),
-    Vault = require('../models/Vault'),
-    Book = require('../models/BookSchema'),
-    Website = require('../models/WebsiteSchema'),
-    Podcast = require('../models/PodcastSchema');
+    Vault = require('../models/Vault');
 
 module.exports = {
-    // ADD NEW BOOK
-    addBook: (req, res) => {
-        var book = new Book(req.body);
-        book.save((err, book) => {
-            if (err) {
-                console.log(err);
+    //ADD BOOKS
+    addBook: function(req, res) {
+        User.update({
+            email: req.session.email
+        }, {
+            $push: {
+                "books": req.body
             }
-            res.json(book);
+        }, function(err, user) {
+            if (err) {
+                console.error(err);
+            } else {
+                console.log(user);
+            }
         });
+        res.send(req.body);
+
     },
-    //ADD NEW PODCAST
-    addPodcast: (req, res) => {
-        var podcast = new Podcast(req.body);
-        podcast.save((err, podcast) => {
-            if (err) {
-                console.log(err);
+    //DELETE BOOKS
+    deleteBook: function(req, res) {
+        console.log(req.body.books);
+
+        User.update({
+            email: req.session.email
+        }, {
+            $pull: {
+                "books": req.body.books
             }
-            res.json(podcast);
+        }, function(err, user) {
+            if (err) {
+                console.error(err);
+            } else {
+                console.log(user);
+            }
         });
+        res.send('Profile updated');
     },
-    //ADD NEW WEBSITE
-    addWebsite: (req, res) => {
-        var website = new Website(req.body);
-        website.save((err, website) => {
-            if (err) {
-                console.log(err);
+    //ADD WEBSITES
+    addWebsite: function(req, res) {
+        User.update({
+            email: req.session.email
+        }, {
+            $push: {
+                "websites": req.body
             }
-            res.json(website);
+        }, function(err, user) {
+            if (err) {
+                console.error(err);
+            } else {
+                console.log(user);
+            }
         });
+        res.send(req.body);
+
     },
-    //DELETE BOOK
-    deleteBook: (req, res) => {
-      Vault.findOne({_id: req.params.id})
-        website.save((err, website) => {
-            if (err) {
-                console.log(err);
+    //DELETE WEBSITES
+    deleteWebsite: function(req, res) {
+        console.log(req.body.websites);
+
+        User.update({
+            email: req.session.email
+        }, {
+            $pull: {
+                "websites": req.body.websites
             }
-            res.json(website);
+        }, function(err, user) {
+            if (err) {
+                console.error(err);
+            } else {
+                console.log(user);
+            }
         });
+        res.send('Profile updated');
+    },
+    //ADD PODCASTS
+    addPodcast: function(req, res) {
+        User.update({
+            email: req.session.email
+        }, {
+            $push: {
+                "podcasts": req.body
+            }
+        }, function(err, user) {
+            if (err) {
+                console.error(err);
+            } else {
+                console.log(user);
+            }
+        });
+        res.send(req.body);
+
+    },
+    //DELETE PODCASTS
+    deletePodcast: function(req, res) {
+        console.log(req.body.podcasts);
+
+        User.update({
+            email: req.session.email
+        }, {
+            $pull: {
+                "podcasts": req.body.podcasts
+            }
+        }, function(err, user) {
+            if (err) {
+                console.error(err);
+            } else {
+                console.log(user);
+            }
+        });
+        res.send('Profile updated');
     }
 };

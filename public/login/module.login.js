@@ -13,7 +13,7 @@ function LoginController($http) {
             $http.post('/login', login.payload).then(login.login.success, login.login.error);
         },
         success: function(res) {
-            location.href = '/';
+            location.href = '/#/profile';
         },
         error: function(err) {
             alertify.alert("LearnBank", "Invalid user or password!");

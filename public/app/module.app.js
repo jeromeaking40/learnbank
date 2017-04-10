@@ -11,6 +11,18 @@ var App = angular.module('LearnBank', ['ngRoute'])
               templateUrl: '/app/components/register/register.html',
               controller: 'authCtrl as auth'
           })
+          .when('/profile', {
+           templateUrl: '/app/components/profile/profile.html',
+           controller: 'mainCtrl as main'
+          })
+          .when('/addvault', {
+              templateUrl: '/app/components/vault/addvault.html',
+              controller: 'vaultCtrl as vault'
+          })
+          .when('/createvault', {
+              templateUrl: '/app/components/vault/createvault.html',
+              controller: 'vaultCtrl as vault'
+          })
           .otherwise({
             redirectTo: '/'
           });

@@ -1,14 +1,11 @@
 const User = require('../models/User'),
-    Vault = require('../models/Vault'),
-    Book = require('../models/BookSchema'),
-    Website = require('../models/WebsiteSchema'),
-    Podcast = require('../models/PodcastSchema');
+    Vault = require('../models/Vault');
 
 module.exports = {
     //MAKE NEW BANK
     addVault: (req, res) => {
         let vault = new Vault(req.body);
-        vault.user = req.params.id;
+        vault.user = req.session._id;
         vault.save((err, vault) => {
             if (err) {
                 console.log('There was an error', err);

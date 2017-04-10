@@ -18,7 +18,6 @@ module.exports = {
     //LOGIN USERS
     userLogin: (req, res) => {
         // POST login
-        console.info('LOGIN::POST::PAYLOAD::');
         User.findOne({
             email: req.body.email
         }, (err, user) => {
@@ -53,12 +52,13 @@ module.exports = {
     },
     //GET USER INFORMATION FOR PROFILE
     me: (req, res) => {
-        UserProfile.findOne({
-            user: req.session._id
+        User.findOne({
+            _id: req.session._id
         }, (err, user) => {
             if (err) {
                 res.send(err);
             }
+            delete user.password;
             res.send(user);
         });
     },

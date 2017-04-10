@@ -24,36 +24,27 @@
 <body ng-controller="loginCtrl as login">
     <!--LOGIN FORM-->
     <h1 class="text-center">
-          <a href="/">LearnBank</a>
+        <a href="/">LearnBank</a>
     </h1>
 
-    <form class="form-horizontal" ng-submit="login.login.submit()">
+    <form ng-submit="login.login.submit()">
         <fieldset>
-            <legend class="text-center">LOGIN</legend>
+            <legend class="text-center">Login</legend>
 
             <div class="form-group">
-                <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-                <div class="col-lg-10">
-                    <input type="text" class="form-control" id="inputEmail" placeholder="Email" ng-model="login.payload.email">
-                </div>
+                <input type="text" class="form-control" placeholder="Email" ng-model="login.payload.email">
             </div>
 
             <div class="form-group">
-                <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-                <div class="col-lg-10">
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="login.payload.password">
-                </div>
+                <input type="password" class="form-control" placeholder="Password" ng-model="login.payload.password">
             </div>
 
-            <div class="form-group">
-                <div class="col-lg-10 col-lg-offset-2">
-                    <button class="btn btn-default" type="submit">LOG IN</button>
-                    <!-- <a class="text-center recover" href="/views/forgot.html">Recover Password</a><hr> -->
-                    <a href="/#/register">
-                        <h5 class="registerredirect">Haven't registered? Sign up for a account</h5>
-                    </a>
-                </div>
-            </div>
+            <button type="submit" class="btn btn-primary">Log In</button>
+            <a class="text-center recover" href="/views/forgot.html">Recover Password</a>
+            <hr>
+            <a href="/#/register">
+                <h5 class="registerredirect">Haven't registered? Sign up for a account</h5>
+            </a>
         </fieldset>
     </form>
 
