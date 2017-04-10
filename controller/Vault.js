@@ -2,7 +2,7 @@ const User = require('../models/User'),
     Vault = require('../models/Vault');
 
 module.exports = {
-    //MAKE NEW BANK
+    //MAKE NEW VAULT
     addVault: (req, res) => {
         let vault = new Vault(req.body);
         vault.user = req.session._id;
@@ -15,11 +15,12 @@ module.exports = {
     },
     //GET VAULT
     findVault: (req, res) => {
-        Vault.findById(req.params.id, (err, vault) => {
+        Vault.findOne({user: req.session._id}, function(err, vault) {
             if (err) {
-                console.log(err);
+                res.send(err);
+            } else {
+                res.send(vault);
             }
-            res.send('Here is your vault', vault);
         });
     }
 };

@@ -19,6 +19,10 @@ var App = angular.module('LearnBank', ['ngRoute'])
               templateUrl: '/app/components/vault/addvault.html',
               controller: 'vaultCtrl as vault'
           })
+          .when('/showvault', {
+              templateUrl: '/app/components/vault/showvault.html',
+              controller: 'vaultCtrl as vault'
+          })
           .when('/createvault', {
               templateUrl: '/app/components/vault/createvault.html',
               controller: 'vaultCtrl as vault'

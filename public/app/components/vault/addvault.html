@@ -2,19 +2,37 @@
 
 <div class="container">
 
-    <form ng-submit="vault.add.submit()" style="margin-top:30px;">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Website" ng-model="vault.payload.websites">
-        </div>
+    <div class="table-responsive">
+        <table class="table users">
+            <thead>
+                <tr> Add Resources</tr>
+            </thead>
+            <tbody>
+                <tr class="separator">
 
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Podcast" ng-model="vault.payload.podcasts">
-        </div>
+                    <td class="input">
+                        <input type="text" class="form-control" placeholder="Website" ng-model="vault.payload.websites">
+                        <button class="btn btn-xs" ng-click="vault.addwebsite.submit()">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </td>
 
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Book" ng-model="vault.payload.books">
-        </div>
+                    <td class="input">
+                        <input type="text" class="form-control" placeholder="Podcast" ng-model="vault.payload.podcasts">
+                        <button class="btn btn-xs" ng-click="vault.addpodcast.submit()">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </td>
 
-        <button type="submit" class="btn btn-primary">Add</button>
-    </form>
+                    <td class="input">
+                        <input type="text" class="form-control" placeholder="Book" ng-model="vault.payload.books">
+                        <button class="btn btn-xs" ng-click="vault.addbook.submit()">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </td>
+
+            </tbody>
+        </table>
+    </div>
+
 </div>

@@ -19,7 +19,7 @@ const VaultSchema = new Schema({
       type: Array,
       default: [],
     },
-    podcasts:  {
+    podcasts: {
       type: Array,
       default: []
     }

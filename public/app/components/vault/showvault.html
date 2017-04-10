@@ -1,0 +1,14 @@
+<div class="container">
+    <h1 class="text-center">Your Vault: {{vault.data.username}}</h1>
+        <div ng-repeat="podcast in vault.data.podcasts">
+          <p ng-repeat="(pod, cast) in podcast">Podcast: {{cast}}</p>
+        </div>
+
+        <div ng-repeat="book in vault.data.books">
+          <p ng-repeat="(bo, ok) in book">Books: {{ok}}</p>
+        </div>
+
+        <div ng-repeat="website in vault.data.websites">
+        <p ng-repeat="(web, site) in website">Websites: {{site}}</p>
+        </div>
+</div>

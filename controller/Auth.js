@@ -59,7 +59,6 @@ module.exports = {
             if (err) {
                 res.send(err);
             }
-            // delete user.password;
             res.send(user);
         });
     },

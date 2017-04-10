@@ -4,8 +4,8 @@ const User = require('../models/User'),
 module.exports = {
     //ADD BOOKS
     addBook: function(req, res) {
-        User.update({
-            email: req.session.email
+        Vault.update({
+            user: req.session._id
         }, {
             $push: {
                 "books": req.body
@@ -24,8 +24,8 @@ module.exports = {
     deleteBook: function(req, res) {
         console.log(req.body.books);
 
-        User.update({
-            email: req.session.email
+        Vault.update({
+            user: req.session._id
         }, {
             $pull: {
                 "books": req.body.books
@@ -41,8 +41,8 @@ module.exports = {
     },
     //ADD WEBSITES
     addWebsite: function(req, res) {
-        User.update({
-            email: req.session.email
+        Vault.update({
+            user: req.session._id
         }, {
             $push: {
                 "websites": req.body
@@ -61,8 +61,8 @@ module.exports = {
     deleteWebsite: function(req, res) {
         console.log(req.body.websites);
 
-        User.update({
-            email: req.session.email
+        Vault.update({
+            user: req.session._id
         }, {
             $pull: {
                 "websites": req.body.websites
@@ -78,8 +78,8 @@ module.exports = {
     },
     //ADD PODCASTS
     addPodcast: function(req, res) {
-        User.update({
-            email: req.session.email
+      Vault.update({
+            user: req.session._id
         }, {
             $push: {
                 "podcasts": req.body
@@ -98,8 +98,8 @@ module.exports = {
     deletePodcast: function(req, res) {
         console.log(req.body.podcasts);
 
-        User.update({
-            email: req.session.email
+      Vault.update({
+            user: req.session._id
         }, {
             $pull: {
                 "podcasts": req.body.podcasts
