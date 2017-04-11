@@ -7,17 +7,41 @@ function LoginController($http) {
 
     login.payload = {};
 
-    //SEND USER PROFILE IF AUTHENICATED
-    login.login = {
-        submit: function() {
-            $http.post('/login', login.payload).then(login.login.success, login.login.error);
-        },
+    login.reset = {
+        active: false,
         success: function(res) {
-            location.href = '/#/profile';
+            alertify.success('Check your email to receive your temporary password!');
+            console.log('Success');
         },
-        error: function(err) {
-            alertify.alert("LearnBank", "Invalid user or password!");
-            console.error(err);
+        failure: function(err) {
+            if (err) {
+                alertify.error('There was an error, Please refresh and try again.');
+                console.error(err);
+            }
+        },
+        toggle: function() {
+            login.reset.active = !login.reset.active;
         }
     };
+
+    login.submit = function() {
+        switch (login.reset.active) {
+            case false:
+                $http.post('/login', login.payload).then(login.success, login.failure);
+                break;
+            case true:
+                $http.post('/password/reset', login.payload).then(login.reset.success, login.reset.failure);
+                break;
+        }
+    };
+
+    login.success = function(res) {
+        location.href = '/#/profile';
+    };
+
+    login.failure = function(res) {
+        alertify.error('Invalid Username or Password');
+        login.message = res.data && res.data.message || 'Login failed!';
+    };
+
 }

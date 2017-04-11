@@ -10,7 +10,7 @@ module.exports = {
             if (err) {
                 console.log('There was an error', err);
             }
-            res.json('You have created a vault for your learn bank! :', vault);
+            res.json(vault);
         });
     },
     //GET VAULT

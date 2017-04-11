@@ -2,6 +2,8 @@ const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const randomstring = require('randomstring');
 const CONFIG = require('../package').config;
+const EMAIL_CONFIG = CONFIG.emailer;
+const EMAILER = require('nodemailer').createTransport(EMAIL_CONFIG);
 const sessions = require('client-sessions');
 
 module.exports = {
@@ -46,6 +48,47 @@ module.exports = {
                 });
             }
         });
+    },
+    //PASSWORD RESET 
+    password: {
+        reset: (req, res) => {
+            User.findOne({
+                email: req.body.email
+            }, (err, user) => {
+                if (err) {
+                    return res.status(500).json(err);
+
+                }
+                if (!user) {
+                    return res.status(403).json({message: 'Nonexistant'});
+
+                }
+                var password = randomstring.generate(9);
+                user.password = password;
+                user.save((err) => {
+                    if (err) {
+                        return res.status(500).send(err);
+                    }
+                    EMAILER.sendMail({
+                        // sender address
+                        from: EMAIL_CONFIG.auth.user,
+                        // receiver
+                        to: req.body.email,
+                        // subject line
+                        subject: 'LearnBank Password Reset',
+                        // plaintext body
+                        text: `Here is your new temporary password: ${password}
+                       Be sure to update password in your account settings.`
+                    }, (err, info) => {
+                        if (err) {
+                            console.log(err);
+                            return res.status(500).send(err);
+                        }
+                        res.send(messages.email);
+                    });
+                });
+            });
+        }
     },
     //PROFILE PAGE ONCE CONFIRMED
     profilePage: (req, res) => {

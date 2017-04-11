@@ -16,6 +16,7 @@ function AuthController($http) {
             alertify.success("Successfully created account!");
             location.href = '/#/createvault';
             auth.payload = {};
+            auth.info();
             console.log('Account Created', res.data);
         },
         error: function(err) {

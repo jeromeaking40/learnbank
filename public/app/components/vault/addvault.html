@@ -1,7 +1,6 @@
 <h1 class="text-center">Add your favorite resources to your vault!</h1>
 
 <div class="container">
-
     <div class="table-responsive">
         <table class="table users">
             <thead>
@@ -9,30 +8,27 @@
             </thead>
             <tbody>
                 <tr class="separator">
-
                     <td class="input">
-                        <input type="text" class="form-control" placeholder="Website" ng-model="vault.payload.websites">
+                        <input type="text" class="form-control" placeholder="Website" ng-model="vault.website">
                         <button class="btn btn-xs" ng-click="vault.addwebsite.submit()">
                             <span class="glyphicon glyphicon-plus"></span>
                         </button>
                     </td>
 
                     <td class="input">
-                        <input type="text" class="form-control" placeholder="Podcast" ng-model="vault.payload.podcasts">
+                        <input type="text" class="form-control" placeholder="Podcast" ng-model="vault.podcast">
                         <button class="btn btn-xs" ng-click="vault.addpodcast.submit()">
                             <span class="glyphicon glyphicon-plus"></span>
                         </button>
                     </td>
 
                     <td class="input">
-                        <input type="text" class="form-control" placeholder="Book" ng-model="vault.payload.books">
+                        <input type="text" class="form-control" placeholder="Book" ng-model="vault.book">
                         <button class="btn btn-xs" ng-click="vault.addbook.submit()">
                             <span class="glyphicon glyphicon-plus"></span>
                         </button>
                     </td>
-
             </tbody>
         </table>
     </div>
-
 </div>

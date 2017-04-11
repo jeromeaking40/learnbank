@@ -1,14 +1,18 @@
 <div class="container">
     <h1 class="text-center">Your Vault: {{vault.data.username}}</h1>
-        <div ng-repeat="podcast in vault.data.podcasts">
-          <p ng-repeat="(pod, cast) in podcast">Podcast: {{cast}}</p>
-        </div>
+    <ul>
+        <li ng-repeat="podcast in vault.data.podcasts">{{podcast}}
+        <i class="fa fa-trash-o fa-lg" ng-click="vault.deletePodcast($index)"></i>
+        </li>
+    </ul>
 
-        <div ng-repeat="book in vault.data.books">
-          <p ng-repeat="(bo, ok) in book">Books: {{ok}}</p>
-        </div>
+    <!-- <ul ng-repeat="book in vault.data.books">
+        <li ng-repeat="(bo, ok) in book">Books: {{ok}}</li>
+        <i class="fa fa-trash-o fa-lg" ng-click="vault.deleteBook($index)"></i>
+    </ul>
 
-        <div ng-repeat="website in vault.data.websites">
-        <p ng-repeat="(web, site) in website">Websites: {{site}}</p>
-        </div>
+    <ul ng-repeat="website in vault.data.websites">
+        <li ng-repeat="(web, site) in website">Websites: {{site}}</li>
+        <i class="fa fa-trash-o fa-lg" ng-click="vault.deleteWebsite($index)"></i>
+    </ul> -->
 </div>
