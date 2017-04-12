@@ -10,7 +10,6 @@ function vaultController($http) {
     vault.podcasts = [];
     vault.books = [];
 
-
     //GET USER VAULT INFO
     vault.get = function() {
         $http.get('/myvault').then(function(res) {
@@ -22,9 +21,9 @@ function vaultController($http) {
             }
         });
     };
-
     vault.get();
 
+    //ADD WEBSITE
     vault.addwebsite = {
         submit: function() {
             vault.websites.push(vault.website);
@@ -41,6 +40,7 @@ function vaultController($http) {
         }
     };
 
+    //ADD PODCAST
     vault.addpodcast = {
         submit: function() {
             vault.podcasts.push(vault.podcast);
@@ -57,6 +57,7 @@ function vaultController($http) {
         }
     };
 
+    //ADD BOOK
     vault.addbook = {
         submit: function() {
             vault.books.push(vault.book);
@@ -73,6 +74,7 @@ function vaultController($http) {
         }
     };
 
+    //CREATE VAULT
     vault.create = {
         submit: function() {
             $http.post('/addvault', vault.payload).then(vault.create.success, vault.create.error);
@@ -88,7 +90,7 @@ function vaultController($http) {
         }
     };
 
-
+    //DELETE WEBSITE
     vault.deleteWebsite = function($index) {
         var deleteWebsite = alertify.confirm("Are you sure you want to delete this website?", function() {
             $http({
@@ -106,6 +108,52 @@ function vaultController($http) {
             });
             console.log("Deleted website");
             alertify.success('Website was deleted.');
+        }, function() {
+            alertify.error('Cancel');
+        });
+    };
+
+    //DELETE PODCAST
+    vault.deletePodcast = function($index) {
+        var deletePodcast = alertify.confirm("Are you sure you want to delete this podcast", function() {
+            $http({
+                method: 'PUT',
+                url: '/deletepodcast',
+                data: {
+                    podcasts: vault.data.podcasts[$index]
+                }
+            }).then(function(res) {
+                console.log(res.data);
+                vault.data.podcasts.splice($index, 1);
+            }, function(err) {
+                // DO NOT FORGET!!!! A ERROR CALLBACK
+                console.error(err);
+            });
+            console.log("Deleted podcast");
+            alertify.success('Podcast was deleted.');
+        }, function() {
+            alertify.error('Cancel');
+        });
+    };
+
+    //DELETE BOOK
+    vault.deleteBook = function($index) {
+        var deleteBook = alertify.confirm("Are you sure you want to delete this book", function() {
+            $http({
+                method: 'PUT',
+                url: '/deletebook',
+                data: {
+                    books: vault.data.books[$index]
+                }
+            }).then(function(res) {
+                console.log(res.data);
+                vault.data.books.splice($index, 1);
+            }, function(err) {
+                // DO NOT FORGET!!!! A ERROR CALLBACK
+                console.error(err);
+            });
+            console.log("Deleted book");
+            alertify.success('Book was deleted.');
         }, function() {
             alertify.error('Cancel');
         });

@@ -6,13 +6,15 @@
         </li>
     </ul>
 
-    <!-- <ul ng-repeat="book in vault.data.books">
-        <li ng-repeat="(bo, ok) in book">Books: {{ok}}</li>
+    <ul>
+        <li ng-repeat="book in vault.data.books">{{book}}
         <i class="fa fa-trash-o fa-lg" ng-click="vault.deleteBook($index)"></i>
+        </li>
     </ul>
 
-    <ul ng-repeat="website in vault.data.websites">
-        <li ng-repeat="(web, site) in website">Websites: {{site}}</li>
+    <ul>
+        <li ng-repeat="website in vault.data.websites">{{website}}
         <i class="fa fa-trash-o fa-lg" ng-click="vault.deleteWebsite($index)"></i>
-    </ul> -->
+        </li>
+    </ul>
 </div>

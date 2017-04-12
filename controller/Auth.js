@@ -49,7 +49,7 @@ module.exports = {
             }
         });
     },
-    //PASSWORD RESET 
+    //PASSWORD RESET
     password: {
         reset: (req, res) => {
             User.findOne({
@@ -89,6 +89,33 @@ module.exports = {
                 });
             });
         }
+    },
+    //UPDATE PASSWORD
+    updatePassword: (req, res) => {
+      User.findByIdAndUpdate(req.session._id, (err,user) => {
+        if (err) {
+          console.error(err);
+        }
+        user.password = req.body;
+        // GENERATE A SALT VALUE TO ENCRYPT PASSWORD
+        bcrypt.genSalt(SALT_INDEX, (saltErr, salt) => {
+            if (saltErr) {
+                console.error(saltErr);
+                return next(saltErr);
+            }
+            console.info('SALT GENERATED', salt);
+            //HASH THE PASSWORD BEFORE SAVING IT
+            bcrypt.hash(user.password, salt, (hashErr, hashedPassword) => {
+                if (hashErr) {
+                    console.error(hashErr);
+                    return next(hashErr);
+                }
+                // OVERRIDE THE PLAIN TEXT PASSWORD WITH THE HASHED PASSWORD
+                user.password = hashedPassword;
+                next();
+            });
+        });
+      });
     },
     //PROFILE PAGE ONCE CONFIRMED
     profilePage: (req, res) => {

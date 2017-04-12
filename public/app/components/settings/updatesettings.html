@@ -1,0 +1,43 @@
+<form ng-submit="settings.submit()">
+    <div class="row">
+        <fieldset class="form-group col-xs-12 col-sm-6">
+            <label class="sr-only" for="email">Email</label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-envelope"></span>
+                </div>
+                <input type="text" class="form-control" ng-model="settings.payload.email" placeholder="Email" />
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="row">
+        <fieldset class="form-group col-xs-12 col-sm-6">
+            <label class="sr-only" for="password">Edit Password</label>
+            <div class="input-group">
+                <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+                <input type="password" class="form-control" ng-model="settings.payload.password" placeholder="Update password" />
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="row">
+        <fieldset class="form-group col-xs-12 col-sm-6">
+            <label class="sr-only" for="password">Verify Password</label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <span class="glyphicon" ng-class="{
+                            'glyphicon-unchecked': !settings.valid.password,
+                            'glyphicon-check': settings.valid.password,
+                            'text-success': settings.valid.password
+                        }"></span>
+                </div>
+                <input type="password" class="form-control" ng-model="settings.verify.password" placeholder="Verfiy password" />
+            </div>
+        </fieldset>
+    </div>
+
+    <fieldset class="clearfix">
+        <button type="submit" class="btn btn-primary pull-right">Save</button>
+    </fieldset>
+</form>
